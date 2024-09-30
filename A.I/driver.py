@@ -3,7 +3,7 @@ import ai
 
 def check_library_installed():
     # open the file containing library names
-    with open('A.I/libraries.txt', 'r') as file:
+    with open('libraries.txt', 'r') as file:
         # Iterate over each line (library name) in the file
         for library in file:
             library = library.strip()  # Remove newline and extra spaces

@@ -10,3 +10,7 @@
 {"role": "assistant", "content": ""}
 {"role": "user", "content": "what are some scary movies I can watch"}
 {"role": "assistant", "content": ""}
+{"role": "user", "content": "nothing"}
+{"role": "assistant", "content": ""}
+{"role": "user", "content": "name the best fighters in the world"}
+{"role": "assistant", "content": ""}

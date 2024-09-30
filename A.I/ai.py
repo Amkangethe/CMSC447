@@ -30,7 +30,7 @@ class ai_assistant:
         return []
 
     def identity(self):
-        with open('A.I/ai_identity', 'r') as file:
+        with open('A.I/ai_identity.txt', 'r') as file:
             content = file.read()
         return content
     
