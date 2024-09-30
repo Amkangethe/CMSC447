@@ -52,6 +52,7 @@ class ai_assistant:
             content = i['message']['content']
             if output:
                 print(content, end='', flush=True)
+        print("\n")
 
         # Append the assistant's response to the conversation history
         self.messages.append({"role": "assistant", "content": content})
