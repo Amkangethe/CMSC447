@@ -29,3 +29,7 @@ def check_library_installed():
 if __name__ == "__main__":
     check_library_installed()
     dog = ai.ai_assistant()
+
+    while(True):
+        userInput = input("What do you want to tell me: ")
+        dog.get_response(userInput, True)
