@@ -15,7 +15,7 @@ class ai_assistant:
     def load_history(self):
         try:
             messages = []
-            with open('ai_chat_history', 'r') as file:
+            with open('A.I/ai_chat_history.json', 'r') as file:
                 lines = file.readlines()
                 for line in lines:
                     line = line.strip()
@@ -59,6 +59,6 @@ class ai_assistant:
 
     def save_history(self, message):
         # Append new messages to the chat history file
-        with open('ai_chat_history', 'a') as file:
+        with open('A.I/ai_chat_history.json', 'a') as file:
             json.dump(message, file)
             file.write("\n")  # Ensure each message is on a new line
