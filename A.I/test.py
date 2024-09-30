@@ -1,4 +1,3 @@
 import ollama
 
-
-d
+print("yolo")
