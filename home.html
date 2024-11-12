@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinegram</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logoT.png" alt="Cinegram Logo">
+            <h1>Cinegram</h1>
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+			<a href="login.html">Login</a>
+            <!-- <!- <a href="profile.html">Profile</a>
+            <a href="friends.html">Friends</a>
+            <a href="settings.html">Settings</a>-->
+            <a href="help.html">Help</a>
+        </nav>
+    </header>
+    <main>
+        <section class="trending">
+            <h2>Trending Movies</h2>
+            <div class="movie-list-container">
+                <button class="scroll-btn left" onclick="scrollLeft('trending')">&#9664;</button>
+                <div class="movie-list" id="trending">
+                <img src="https://www.imdb.com/title/tt14858658/mediaviewer/rm623473409/?ref_=tt_ov_i" alt="Blink Twice">
+                <img src="https://www.imdb.com/title/tt24577462/mediaviewer/rm2720560897/?ref_=tt_ov_i" alt="Afraid">
+                <img src="https://www.imdb.com/title/tt6263850/mediaviewer/rm79129601/?ref_=tt_ov_i" alt="Deadpool 3">
+                <img src="https://www.imdb.com/title/tt12349832/mediaviewer/rm4251023873/?ref_=tt_ov_i" alt="Cuckoo">
+                <img src="https://www.imdb.com/title/tt23468450/mediaviewer/rm800947457/?ref_=tt_ov_i" alt="Longlegs">
+				<img src="https://www.imdb.com/title/tt14858658/mediaviewer/rm623473409/?ref_=tt_ov_i" alt="Blink Twice">
+                <img src="https://www.imdb.com/title/tt24577462/mediaviewer/rm2720560897/?ref_=tt_ov_i" alt="Afraid">
+                <img src="https://www.imdb.com/title/tt6263850/mediaviewer/rm79129601/?ref_=tt_ov_i" alt="Deadpool 3">
+                <img src="https://www.imdb.com/title/tt12349832/mediaviewer/rm4251023873/?ref_=tt_ov_i" alt="Cuckoo">
+                <img src="https://www.imdb.com/title/tt23468450/mediaviewer/rm800947457/?ref_=tt_ov_i" alt="Longlegs">
+                </div>
+                <button class="scroll-btn right" onclick="scrollRight('trending')">&#9654;</button>
+            </div>
+        </section>
+        <section class="suggestions">
+            <h2>Suggestions By Friends</h2>
+            <div class="movie-list-container">
+                <button class="scroll-btn left" onclick="scrollLeft('suggestions')">&#9664;</button>
+                <div class="movie-list" id="suggestions">
+                    <img src="https://via.placeholder.com/150x250.png?text=The+Matrix" alt="The Matrix">
+                    <img src="https://via.placeholder.com/150x250.png?text=Scarecrow" alt="Scarecrow">
+                </div>
+                <button class="scroll-btn right" onclick="scrollRight('suggestions')">&#9654;</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
