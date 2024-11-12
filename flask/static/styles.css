@@ -1,0 +1,38 @@
+/* Movie List Container */
+.movie-list-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Prevents overflow in the container */
+}
+
+.movie-list {
+    display: flex;
+    gap: 15px;
+    padding: 20px 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for all browsers */
+.movie-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, WebKit */
+}
+
+.movie-list {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Movie Cards */
+.movie-list img {
+    width: 150px;
+    height: 250px;
+    background-color: #333;
+    border: 2px solid #888;
+    transition: transform 0.3s ease;
+}
+
+.movie-list img:hover {
+    transform: scale(1.1);
+}
