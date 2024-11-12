@@ -48,5 +48,28 @@ def index():
     # If the user is not logged in, render a landing page with login and signup options
     return render_template('signup.html')
 
+def get_movie_images(movie_id):
+    """
+    Fetches movie images (poster, backdrop) for a given movie ID.
+    """
+    movie = tmdb.Movies(movie_id)
+    image_data = movie.images()
+    
+    # TMDb image base URL (change size as needed: 'w500' is for width 500px)
+    base_url = "https://image.tmdb.org/t/p/w500"
+    
+    # Extract poster and backdrop paths
+    poster_path = image_data['posters'][0]['file_path'] if image_data['posters'] else None
+    backdrop_path = image_data['backdrops'][0]['file_path'] if image_data['backdrops'] else None
+    
+    # Construct full URLs
+    poster_url = f"{base_url}{poster_path}" if poster_path else None
+    backdrop_url = f"{base_url}{backdrop_path}" if backdrop_path else None
+    
+    return {
+        'poster_url': poster_url,
+        'backdrop_url': backdrop_url,
+    }
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

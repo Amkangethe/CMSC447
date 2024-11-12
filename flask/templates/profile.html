@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Cinegram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #1c1c1c;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+            color: #fff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .username-display {
+            font-size: 18px;
+            font-weight: normal;
+            margin-left: 15px;
+            color: #fff;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-bottom: 2px solid #6a6aff;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Film List Container */
+        .film-list-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .film-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .film-item:last-child {
+            border-bottom: none;
+        }
+
+        .film-item img {
+            width: 50px;
+            height: 75px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .film-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .film-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .film-genre {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* Additional Styles */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <h1>Cinegram</h1>
+        {% if user %}
+        <span class="username-display">Welcome, {{ user['username'] }}</span>
+        {% endif %}
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('auth.friends') }}">Friends</a>
+        <a href="{{ url_for('auth.help') }}">Help</a>
+        <a href="{{ url_for('auth.logout') }}">Logoff</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Films You Like Section -->
+    <section class="film-list-container">
+        <h2>Films You Like</h2>
+        {% for film in liked_films %}
+        <div class="film-item">
+            <img src="{{ film.image_url }}" alt="{{ film['title'] }}">
+            <div class="film-info">
+                <span class="film-title">{{ film['title'] }}</span>
+                <span class="film-genre">{{ film['genre'] }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Films You Dislike Section -->
+    <section class="film-list-container">
+        <h2>Films You Dislike</h2>
+        {% for film in disliked_films %}
+        <div class="film-item">
+            <img src="{{ film.image_url }}" alt="{{ film['title'] }}">
+            <div class="film-info">
+                <span class="film-title">{{ film['title'] }}</span>
+                <span class="film-genre">{{ film['genre'] }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Cinegram. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Cinegram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Additional Styling for Help Page */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #1c1c1c;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+            color: #fff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px); /* Full height minus header */
+            color: #333;
+        }
+
+        .contact-container {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .contact-container label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .contact-container button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #6a6aff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-container button:hover {
+            background-color: #5a5adc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <h1>Cinegram</h1>
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('auth.friends') }}">Friends</a>
+            <a href="{{ url_for('auth.profile') }}">Profile</a> <!-- Link to profile page -->
+            <a href="{{ url_for('auth.logout') }}">Logoff</a>
+        </nav>
+    </header>
+    
+
+    <main class="contact-page">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <form action="#" method="post">
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="name" required>
+
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" name="email" required>
+
+                <label for="contact-message">Message:</label>
+                <textarea id="contact-message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
