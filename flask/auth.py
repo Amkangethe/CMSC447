@@ -171,3 +171,4 @@ def check_availability():
 def friends():
     # Placeholder route for the friends page
     return render_template('friends.html')  # Ensure friends.html exists
+

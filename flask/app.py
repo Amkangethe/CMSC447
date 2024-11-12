@@ -28,25 +28,20 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    # Fetch trending movies from TMDB API
-    trending = tmdb.Trending(media_type='movie', time_window='day')
-    response = trending.info()
-
-    # Extract movie data
-    movies = [
+    # Use popular movies as a substitute for trending
+    movies_api = tmdb.Movies()
+    trending_movies = movies_api.popular()['results']  # Fetch popular movies
+    
+    # Extract relevant data for each movie
+    movies_data = [
         {
-            "title": movie.get("title"),
-            "poster_path": f"https://image.tmdb.org/t/p/w500{movie.get('poster_path')}",
-            "overview": movie.get("overview"),
+            'title': movie['title'],
+            'poster_path': f"https://image.tmdb.org/t/p/w200{movie['poster_path']}" if movie['poster_path'] else None,
         }
-        for movie in response.get("results", [])
+        for movie in trending_movies
     ]
-
-    # If the user is logged in, render the main home page with movies
-    if current_user.is_authenticated:
-        return render_template('index.html', username=current_user.username, movies=movies)
-    # If the user is not logged in, render a landing page with login and signup options
-    return render_template('signup.html')
+    
+    return render_template('index.html', trending_movies=movies_data)
 
 def get_movie_images(movie_id):
     """

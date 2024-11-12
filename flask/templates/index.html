@@ -97,9 +97,8 @@
         .movie-list {
             display: flex;
             gap: 15px;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
             padding: 10px;
+            scroll-behavior: smooth;
         }
 
         .movie-item {
@@ -108,6 +107,13 @@
             background-color: #555;
             border-radius: 8px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .movie-title {
@@ -143,16 +149,6 @@
         .scroll-btn.right {
             right: 5px;
         }
-
-        /* Additional Styles */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #888;
-            border-top: 1px solid #444;
-            margin-top: 30px;
-        }
     </style>
 </head>
 <body>
@@ -167,64 +163,69 @@
         </div>
         <nav>
             <a href="{{ url_for('auth.friends') }}">Friends</a>
-            <a href="{{ url_for('auth.profile') }}">Profile</a> <!-- Link to profile page -->
+            <a href="{{ url_for('auth.profile') }}">Profile</a>
             <a href="{{ url_for('auth.help') }}">Help</a>
             <a href="{{ url_for('auth.logout') }}">Logoff</a>
         </nav>
     </header>
+
+    <main>
+        <section class="trending">
+            <h2>Trending Movies</h2>
+            <div class="movie-list-container">
+                <button class="scroll-btn left" onclick="scrollLeft('trending')">&#9664;</button>
+                <div class="movie-list" id="trending">
+                    {% for movie in trending_movies %}
+                    <div class="movie-item">
+                        {% if movie.poster_path %}
+                        <img src="{{ movie.poster_path }}" alt="{{ movie.title }}">
+                        {% endif %}
+                        <div class="movie-title">{{ movie.title }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="scroll-btn right" onclick="scrollRight('trending')">&#9654;</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function scrollLeft(containerId) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({
+                left: -container.offsetWidth / 2,
+                behavior: 'smooth'
+            });
+        }
     
+        function scrollRight(containerId) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({
+                left: container.offsetWidth / 2,
+                behavior: 'smooth'
+            });
+        }
+    </script>    
+</body>
+</html>
 
-<main>
-    <!-- Trending Movies Section -->
-    <section class="movie-section">
-        <h2>Trending Movies</h2>
-        <div class="movie-list-container">
-            <button class="scroll-btn left" onclick="scrollLeft('trending')">&#9664;</button>
-            <div class="movie-list" id="trending">
-                <!-- Placeholder movie items; replace with dynamic content using API -->
-                <div class="movie-item"><span class="movie-title">Movie 1</span></div>
-                <div class="movie-item"><span class="movie-title">Movie 2</span></div>
-                <div class="movie-item"><span class="movie-title">Movie 3</span></div>
-                <div class="movie-item"><span class="movie-title">Movie 4</span></div>
-                <div class="movie-item"><span class="movie-title">Movie 5</span></div>
-            </div>
-            <button class="scroll-btn right" onclick="scrollRight('trending')">&#9654;</button>
-        </div>
-    </section>
+<!-- Overlay Side Menu for Chat -->
+<div id="chatMenu" class="chat-overlay">
+    <div class="chat-header">
+        <span class="closebtn" onclick="closeChatMenu()">&times;</span>
+        <h2>Chat</h2>
+    </div>
+    <div class="chat-history">
+        <!-- Chat history content goes here -->
+        <p>User1: Hey!</p>
+        <p>User2: Hello!</p>
+    </div>
+    <div class="chat-input">
+        <input type="text" placeholder="Type a message...">
+        <button>Send</button>
+    </div>
+</div>
 
-    <!-- Suggestions By Friends Section -->
-    <section class="movie-section">
-        <h2>Suggestions By Friends</h2>
-        <div class="movie-list-container">
-            <button class="scroll-btn left" onclick="scrollLeft('suggestions')">&#9664;</button>
-            <div class="movie-list" id="suggestions">
-                <!-- Placeholder movie items; replace with dynamic content using API -->
-                <div class="movie-item"><span class="movie-title">Movie A</span></div>
-                <div class="movie-item"><span class="movie-title">Movie B</span></div>
-                <div class="movie-item"><span class="movie-title">Movie C</span></div>
-                <div class="movie-item"><span class="movie-title">Movie D</span></div>
-                <div class="movie-item"><span class="movie-title">Movie E</span></div>
-            </div>
-            <button class="scroll-btn right" onclick="scrollRight('suggestions')">&#9654;</button>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <p>&copy; 2024 Cinegram. All rights reserved.</p>
-</footer>
-
-<script>
-    function scrollLeft(containerId) {
-        const container = document.getElementById(containerId);
-        container.scrollLeft -= container.offsetWidth / 2; // Scroll half the width
-    }
-
-    function scrollRight(containerId) {
-        const container = document.getElementById(containerId);
-        container.scrollLeft += container.offsetWidth / 2; // Scroll half the width
-    }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
