@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends - Cinegram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #1c1c1c;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+            color: #fff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .username-display {
+            font-size: 18px;
+            font-weight: normal;
+            margin-left: 15px;
+            color: #fff;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-bottom: 2px solid #6a6aff;
+            display: inline-block;
+        }
+
+        /* Friends List Container */
+        .friends-list-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .friend-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .friend-item:last-child {
+            border-bottom: none;
+        }
+
+        .friend-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .friend-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .friend-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .friend-status {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* Footer Styling */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <h1>Cinegram</h1>
+        {% if username %}
+        <span class="username-display">Welcome, {{ username }}</span>
+        {% endif %}
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('auth.profile') }}">Profile</a>
+        <a href="{{ url_for('auth.help') }}">Help</a>
+        <a href="{{ url_for('auth.logout') }}">Logoff</a>
+    </nav>
+</header>
+
+<main>
+    <section class="friends-list-container">
+        <h2>Your Friends</h2>
+        {% for friend in friends %}
+        <div class="friend-item">
+            <img src="{{ friend.profile_image_url or url_for('static', filename='images/default_profile.png') }}" alt="{{ friend.name }}">
+            <div class="friend-info">
+                <span class="friend-name">{{ friend.name }}</span>
+                <span class="friend-status">{{ friend.status or "Online" }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Cinegram. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
