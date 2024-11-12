@@ -33,6 +33,7 @@
         .logo {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo img {
@@ -149,12 +150,67 @@
         .scroll-btn.right {
             right: 5px;
         }
+
+        /* Chat Overlay Styling */
+        .chat-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black background with transparency */
+            z-index: 1000; /* Sit on top */
+            overflow-y: auto;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .chat-history {
+            padding: 20px;
+            height: 60%;
+            overflow-y: scroll;
+            color: #fff;
+        }
+
+        .chat-input {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            background-color: #333;
+        }
+
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .chat-input button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
+        <div class="logo" onclick="openChatMenu()">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
             <h1>Cinegram</h1>
             {% if username %}
@@ -189,7 +245,49 @@
         </section>
     </main>
 
+    <!-- Overlay Side Menu for Chat -->
+    <div id="chatMenu" class="chat-overlay">
+        <div class="chat-header">
+            <span class="closebtn" onclick="closeChatMenu()">&times;</span>
+            <h2>Chat</h2>
+        </div>
+        <div class="chat-history">
+            <!-- Chat history content goes here -->
+            <p>User1: Hey!</p>
+            <p>User2: Hello!</p>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
     <script>
+        // Open the chat menu
+        function openChatMenu() {
+            document.getElementById("chatMenu").style.display = "block";
+        }
+
+        // Close the chat menu
+        function closeChatMenu() {
+            document.getElementById("chatMenu").style.display = "none";
+        }
+
+        // Example function for sending a message
+        function sendMessage() {
+            const chatInput = document.querySelector(".chat-input input[type='text']");
+            const message = chatInput.value;
+            if (message.trim() !== "") {
+                const chatHistory = document.querySelector(".chat-history");
+                const messageElement = document.createElement("p");
+                messageElement.textContent = `You: ${message}`;
+                chatHistory.appendChild(messageElement);
+                chatInput.value = ""; // Clear input
+                chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        // Scrolling functions for movie lists
         function scrollLeft(containerId) {
             const container = document.getElementById(containerId);
             container.scrollBy({
@@ -197,7 +295,7 @@
                 behavior: 'smooth'
             });
         }
-    
+
         function scrollRight(containerId) {
             const container = document.getElementById(containerId);
             container.scrollBy({
@@ -205,27 +303,7 @@
                 behavior: 'smooth'
             });
         }
-    </script>    
-</body>
-</html>
+    </script>
 
-<!-- Overlay Side Menu for Chat -->
-<div id="chatMenu" class="chat-overlay">
-    <div class="chat-header">
-        <span class="closebtn" onclick="closeChatMenu()">&times;</span>
-        <h2>Chat</h2>
-    </div>
-    <div class="chat-history">
-        <!-- Chat history content goes here -->
-        <p>User1: Hey!</p>
-        <p>User2: Hello!</p>
-    </div>
-    <div class="chat-input">
-        <input type="text" placeholder="Type a message...">
-        <button>Send</button>
-    </div>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
