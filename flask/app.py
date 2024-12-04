@@ -28,9 +28,9 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    # Use popular movies as a substitute for trending
+    # Fetch popular movies using TMDB API
     movies_api = tmdb.Movies()
-    trending_movies = movies_api.popular()['results']  # Fetch popular movies
+    trending_movies = movies_api.popular()['results']
     
     # Extract relevant data for each movie
     movies_data = [
@@ -40,31 +40,21 @@ def index():
         }
         for movie in trending_movies
     ]
-    
     return render_template('index.html', trending_movies=movies_data)
 
-def get_movie_images(movie_id):
-    """
-    Fetches movie images (poster, backdrop) for a given movie ID.
-    """
-    movie = tmdb.Movies(movie_id)
-    image_data = movie.images()
-    
-    # TMDb image base URL (change size as needed: 'w500' is for width 500px)
-    base_url = "https://image.tmdb.org/t/p/w500"
-    
-    # Extract poster and backdrop paths
-    poster_path = image_data['posters'][0]['file_path'] if image_data['posters'] else None
-    backdrop_path = image_data['backdrops'][0]['file_path'] if image_data['backdrops'] else None
-    
-    # Construct full URLs
-    poster_url = f"{base_url}{poster_path}" if poster_path else None
-    backdrop_url = f"{base_url}{backdrop_path}" if backdrop_path else None
-    
-    return {
-        'poster_url': poster_url,
-        'backdrop_url': backdrop_url,
-    }
+@app.route('/help')
+def help_page():
+    return render_template('help.html')
+
+@app.route('/profile')
+@login_required
+def profile():
+    return redirect(url_for('auth.profile'))
+
+@app.route('/friends')
+@login_required
+def friends():
+    return redirect(url_for('auth.friends'))
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
