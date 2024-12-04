@@ -3,6 +3,9 @@ from flask_login import LoginManager, login_required, current_user
 from db_utils import get_db_connection, User
 from auth import auth  # Import auth blueprint
 import tmdbsimple as tmdb
+from views import views  # Import the views blueprint
+
+
 
 # Configure TMDB API Key
 tmdb.API_KEY = 'a4d876ca3f25f69d049aa011dfce0952'
@@ -11,6 +14,7 @@ tmdb.API_KEY = 'a4d876ca3f25f69d049aa011dfce0952'
 app = Flask(__name__)
 app.secret_key = 'allaniscool'  # Replace with a strong secret key
 app.register_blueprint(auth)  # Register authentication blueprint
+app.register_blueprint(views)
 
 # Configure Flask-Login
 login_manager = LoginManager()
