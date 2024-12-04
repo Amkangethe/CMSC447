@@ -10,7 +10,7 @@ tmdb.API_KEY = 'a4d876ca3f25f69d049aa011dfce0952'
 views = Blueprint('views', __name__)
 
 @views.route('/')
-def index():
+def home():
     """
     Landing page that displays trending movies using TMDB API.
     """
@@ -25,7 +25,7 @@ def index():
         }
         for movie in trending_movies
     ]
-    return render_template('index.html', trending_movies=movies_data)
+    return render_template('home.html', trending_movies=movies_data)
 
 @views.route('/home-login')
 @login_required
@@ -42,7 +42,6 @@ def profile():
     Profile page for the current user.
     """
     user_id = session.get('user_id')
-    # Fetch user data and movie interactions from the database
     with get_db_connection() as conn:
         user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
     if not user:
