@@ -1,8 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for, session, flash
 from flask_login import login_required, current_user
+from db_utils import get_db_connection, User
 import tmdbsimple as tmdb
-
-from flask.db_utils import get_db_connection
 
 # Configure TMDB API Key
 tmdb.API_KEY = 'a4d876ca3f25f69d049aa011dfce0952'
