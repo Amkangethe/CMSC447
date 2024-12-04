@@ -40,7 +40,7 @@ def index():
         }
         for movie in trending_movies
     ]
-    return render_template('index.html', trending_movies=movies_data)
+    return render_template('home.html', trending_movies=movies_data)
 
 @app.route('/help')
 def help_page():

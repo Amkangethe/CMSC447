@@ -51,7 +51,7 @@ def login():
             user_obj = User(user['id'], user['username'])
             login_user(user_obj)
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
         else:
             flash('Invalid username or password.', 'error')
             return render_template('login.html', username=username)
