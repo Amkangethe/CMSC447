@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinegram - Edit Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo" onclick="openChatMenu()">
+                <img src="{{ url_for('static', filename='logoT.png') }}" alt="Cinegram Logo">
+            </div>
+            <h1><a href="{{ url_for('auth.home-login') }}" class="home-link">Cinegram</a></h1>
+        </div>
+        <nav>
+            <a href="{{ url_for('auth.home-login') }}">Home</a>
+            <a href="{{ url_for('auth.profile') }}"class="select">Profile</a>
+            <a href="{{ url_for('auth.friends') }}">Friends</a>
+			<a href="{{ url_for('home') }}">Logout</a>
+            <a href="{{ url_for('auth.help-login') }}">Help</a>
+        </nav>
+    </header>
+
+    <main class="edit-profile-page">
+        <section class="edit-profile-container">
+            <h2>Edit Profile</h2>
+            <form action="{{ url_for('save_profile') }}" method="post" enctype="multipart/form-data">
+                <label for="profile-pic">Profile Picture:</label>
+                <input type="file" id="profile-pic" name="profile_pic" accept="image/*">
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" value="John Doe" required>
+
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" placeholder="Enter your bio" rows="4" required>Movie enthusiast and cinephile. Lover of thrillers, sci-fi, and classics!</textarea>
+
+                <button type="submit" class="save-btn">Save Changes</button>
+            </form>
+        </section>
+    </main>
+	
+	<!-- Overlay Side Menu for Chat -->
+    <div id="chatMenu" class="chat-overlay">
+        <div class="chat-header">
+            <span class="closebtn" onclick="closeChatMenu()">&times;</span>
+            <h2>Chat</h2>
+        </div>
+        <div class="chat-history">
+            <!-- Chat history content goes here -->
+            <p>User1: Hey!</p>
+            <p>User2: Hello!</p>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type a message...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

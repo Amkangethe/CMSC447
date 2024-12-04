@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinegram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo" onclick="openChatMenu()">
+                <img src="{{ url_for('static', filename='logoT.png') }}" alt="Cinegram Logo">
+            </div>
+            <h1><a href="{{ url_for('auth.home-login') }}" class="home-link">Cinegram</a></h1>
+        </div>
+        <nav>
+            <a href="{{ url_for('auth.home-login') }}"class="select">Home</a>
+            <a href="{{ url_for('auth.profile') }}">Profile</a>
+            <a href="{{ url_for('auth.friends') }}">Friends</a>
+			<a href="{{ url_for('home') }}">Logout</a>
+            <a href="{{ url_for('auth.help-login') }}">Help</a>
+        </nav>
+    </header>
+    <main>
+        <section class="trending">
+            <h2>Trending Movies</h2>
+            <div class="movie-list-container">
+                <button class="scroll-btn left" onclick="ScrollFunctions.scrollLeft('trending')">&#9664;</button>
+                <div class="movie-list" id="trending">
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTYEJjkDe4CTZZL6WsGVM6L2EJXGAogNy75UfJ0_lnHq2_Bd4V1YJne6ZFNSkCOCcMPjl_k" alt="Blink Twice">
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/78a46c05944fb46b884effd10e10380cac38f21d0de244c406ecb2d0dc9244d7.jpg" alt="Afraid">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg" alt="Deadpool 3">
+                    <!-- More Images -->
+                </div>
+                <button class="scroll-btn right" onclick="ScrollFunctions.scrollRight('trending')">&#9654;</button>
+            </div>
+        </section>
+        <section class="suggestions">
+            <h2>Suggestions By Friends</h2>
+            <div class="movie-list-container">
+                <button class="scroll-btn left" onclick="scrollLeft('suggestions')">&#9664;</button>
+                <div class="movie-list" id="suggestions">
+                    <img src="https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="The Matrix">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjk3ZjA4OTItZTRmYy00MmJmLWI5NTktMTBhYWMwNDNhOGY0XkEyXkFqcGc@._V1_.jpg" alt="Scarecrow">
+                </div>
+                <button class="scroll-btn right" onclick="scrollRight('suggestions')">&#9654;</button>
+            </div>
+        </section>
+    </main>
+    <!-- Overlay Side Menu for Chat -->
+    <div id="chatMenu" class="chat-overlay">
+        <div class="chat-header">
+            <span class="closebtn" onclick="closeChatMenu()">&times;</span>
+            <h2>Chat</h2>
+        </div>
+        <div class="chat-history">
+            <!-- Chat history content goes here -->
+            <p>User1: Hey!</p>
+            <p>User2: Hello!</p>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type a message...">
+            <button>Send</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

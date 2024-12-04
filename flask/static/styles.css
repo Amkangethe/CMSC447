@@ -92,6 +92,768 @@
     cursor: pointer;
 }
 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #222;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.trending, .suggestions {
+    margin-top: 20px;
+}
+
+/* Movie List Container */
+.movie-list-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.movie-list {
+    display: flex;
+    gap: 15px;
+    padding: 20px 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.movie-list img {
+    width: 150px;
+    height: 250px;
+    background-color: #333;
+    border: 2px solid #888;
+    transition: transform 0.3s ease;
+}
+
+.movie-list img:hover {
+    transform: scale(1.1);
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+}
+
+.scroll-btn.left {
+    left: 0;
+}
+
+.scroll-btn.right {
+    right: 0;
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.header-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+/* Login Section */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #222;
+}
+
+.login-container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    color: #bbb;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a6aff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #5757e5;
+}
+
+.login-container p {
+    color: #bbb;
+    margin-top: 15px;
+}
+
+.login-container a {
+    color: #6a6aff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Header styling (reuse from previous pages) */
+header {
+    background: linear-gradient(to bottom, #6a6aff, #1b1b5e);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.header-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+/* Sign-Up Section */
+.signup-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #222;
+}
+
+.signup-container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    color: #bbb;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btn-signup {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a6aff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-signup:hover {
+    background-color: #5757e5;
+}
+
+.signup-container p {
+    color: #bbb;
+    margin-top: 15px;
+}
+
+.signup-container a {
+    color: #6a6aff;
+    text-decoration: none;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+/* Page-specific styling */
+.login-page, .profile-edit-page, .contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-container, .profile-edit-container, .contact-container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h2, .profile-edit-container h2, .contact-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+form label {
+    color: #bbb;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"], form input[type="email"], form input[type="password"], form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #444;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a6aff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #5757e5;
+}
+
+
+/* Overlay Chat Menu */
+.chat-overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: #fff;
+    z-index: 1000;
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h2 {
+    margin: 0;
+}
+
+.closebtn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #bbb;
+}
+
+.chat-history {
+    padding: 20px;
+    height: 70%;
+    overflow-y: auto;
+    background-color: #333;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #444;
+    border-top: 1px solid #555;
+}
+
+.chat-input input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    background-color: #6a6aff;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #5757e5;
+}
+
+/* Cinegram Title Link */
+
+/* Header - Title and Logo */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    cursor: pointer;
+    margin-right: 10px; /* Adjust spacing between logo and title */
+}
+
+.home-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Overlay Chat Menu */
+.chat-overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: #fff;
+    z-index: 1000;
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.chat-header h2 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.closebtn {
+    position: absolute;
+    left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #bbb;
+}
+
+.chat-history {
+    padding: 20px;
+    height: 70%;
+    overflow-y: auto;
+    background-color: #333;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #444;
+    border-top: 1px solid #555;
+}
+
+.chat-input input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    background-color: #6a6aff;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #5757e5;
+}
+
+/* Search Bar for Friends Page */
+.friends-search {
+    padding: 20px;
+    background-color: #222;
+    text-align: center;
+}
+
+.friends-search input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Friends List */
+.friends-list {
+    padding: 20px;
+    color: #fff;
+}
+
+.friend-profile {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.friend-profile img {
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.friend-info h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.friend-info .status {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.active-status {
+    color: #43B581; /* Active friends status color */
+}
+
+.idle-status {
+	color: #FAA61A; /* Idle friends status color */
+}
+
+.inactive-status {
+    color: #888; /* Inactive friends status color */
+}
+
+.friend-action {
+    margin-left: auto;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a6aff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.friend-action:hover {
+    background-color: #5757e5;
+}
+
+/* Status Friend Colors */
+.active {
+    border-left: 5px solid #43B581;
+}
+
+.idle {
+	border-left: 5px solid #FAA61A;
+}
+
+.inactive {
+    border-left: 5px solid #888;
+}
+
+/* Profile Page Styles */
+.profile-page {
+    padding: 20px;
+    color: #fff;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #6a6aff;
+}
+
+.profile-details {
+    flex: 1; /* Allows proper alignment next to the profile picture */
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    text-align: left;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    color: #aaa;
+}
+
+.edit-profile-btn {
+    padding: 10px 15px;
+    background-color: #6a6aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-profile-btn:hover {
+    background-color: #5757e5;
+}
+
+/* Profile Menu */
+.profile-menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    background-color: #6a6aff;
+}
+
+/* Sections */
+.profile-section {
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    color: #fff;
+}
+
+/* Edit Profile Page */
+.edit-profile-page {
+    padding: 20px;
+    color: #fff;
+}
+
+.edit-profile-container {
+    max-width: 500px;
+    margin: auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.edit-profile-container form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+
+.edit-profile-container form input,
+.edit-profile-container form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+.save-btn {
+    padding: 10px 15px;
+    background-color: #6a6aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #5757e5;
+}
+
+/* Profile Name - Remove Black Background */
+.profile-details h2 {
+    margin: 0;
+    font-size: 24px;
+    background: none; /* Remove background */
+    color: #f5f5f5; /* Keep text color consistent */
+}
+
+.select {
+	color: #6a6aff /* Active tab color */
+}
 
 
 
